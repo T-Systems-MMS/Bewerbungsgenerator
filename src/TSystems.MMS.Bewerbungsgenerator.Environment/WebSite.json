@@ -5,13 +5,7 @@
     "hostingPlanName": {
       "type": "string",
       "minLength": 1
-    },
-    "administratorLogin": {
-      "type": "string"
-    },
-    "administratorLoginPassword": {
-      "type": "securestring"
-    },
+    },    
     "skuName": {
       "type": "string",
       "defaultValue": "F1",
@@ -121,7 +115,7 @@
           ],
           "properties": {
             "DefaultConnection": {
-              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('bwgsqlName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('TSystems.MMS.BewerbungsgeneratorName'), ';User Id=', parameters('administratorLogin'), '@', variables('bwgsqlName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('bwgsqlName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('TSystems.MMS.BewerbungsgeneratorName'), ';User Id=', parameters('bwgsqlAdminLogin'), '@', variables('bwgsqlName'), ';Password=', parameters('bwgsqlAdminLoginPassword'), ';')]",
               "type": "SQLServer"
             }
           }
