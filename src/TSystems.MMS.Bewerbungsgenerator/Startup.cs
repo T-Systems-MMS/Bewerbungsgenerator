@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using TSystems.MMS.Bewerbungsgenerator.Models;
 
 namespace TSystems.MMS.Bewerbungsgenerator
 {
@@ -33,6 +35,9 @@ namespace TSystems.MMS.Bewerbungsgenerator
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<TSystemsMMSBewerbungsgeneratorContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("TSystemsMMSBewerbungsgeneratorContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +46,7 @@ namespace TSystems.MMS.Bewerbungsgenerator
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                InitDatabase(app);
             }
             else
             {
@@ -59,6 +65,15 @@ namespace TSystems.MMS.Bewerbungsgenerator
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        public void InitDatabase(IApplicationBuilder app)
+        {
+            using(var scope = app.ApplicationServices.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<TSystemsMMSBewerbungsgeneratorContext>().Database.Migrate();
+            }
+
         }
     }
 }
