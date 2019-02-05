@@ -85,7 +85,7 @@ namespace TSystems.MMS.Bewerbungsgenerator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FristName,LastName,Telephone,Organisation,Motivation,Study,TheRight")] Form form)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FristName,LastName,Telephone,Organisation,Motivation,Study,TheRight,FirstInvitation,Accepted")] Form form)
         {
             if (id != form.Id)
             {

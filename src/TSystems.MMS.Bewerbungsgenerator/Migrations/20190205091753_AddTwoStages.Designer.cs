@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TSystems.MMS.Bewerbungsgenerator.Models;
 
 namespace TSystems.MMS.Bewerbungsgenerator.Migrations
 {
     [DbContext(typeof(TSystemsMMSBewerbungsgeneratorContext))]
-    partial class TSystemsMMSBewerbungsgeneratorContextModelSnapshot : ModelSnapshot
+    [Migration("20190205091753_AddTwoStages")]
+    partial class AddTwoStages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

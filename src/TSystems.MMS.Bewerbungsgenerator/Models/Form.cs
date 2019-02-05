@@ -43,5 +43,14 @@ namespace TSystems.MMS.Bewerbungsgenerator.Models
         [Required]
         public string TheRight { get; set; }
         #endregion
+
+        //TODO: This can be more general if we put this stuff in seperate stage classes
+        #region Stages
+        [Display(Name="First invitation")]
+        [DataType(DataType.Date)]
+        public DateTime FirstInvitation { get; set; }
+
+        public bool Accepted { get; set; }
+        #endregion
     }
 }
