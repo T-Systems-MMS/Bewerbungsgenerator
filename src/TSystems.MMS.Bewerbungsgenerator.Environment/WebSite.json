@@ -114,7 +114,7 @@
             "[resourceId('Microsoft.Web/Sites/', variables('webSiteName'))]"
           ],
           "properties": {
-            "DefaultConnection": {
+            "TSystemsMMSBewerbungsgeneratorContext": {
               "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('bwgsqlName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('TSystems.MMS.BewerbungsgeneratorName'), ';User Id=', parameters('bwgsqlAdminLogin'), '@', variables('bwgsqlName'), ';Password=', parameters('bwgsqlAdminLoginPassword'), ';')]",
               "type": "SQLServer"
             }
